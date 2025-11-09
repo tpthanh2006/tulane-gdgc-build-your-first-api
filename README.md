@@ -92,7 +92,7 @@ Pick one of the following endpoints to implement:
 
 ### Using FastAPI Docs (Swagger UI)
 
-1. Start your server: `uvicorn main:app --reload`
+1. Start your server: `fastapi dev main.py`
 2. Open your browser and navigate to the docs interface at localhost:8000/docs
 3. Find your endpoint in the documentation
 4. Click "Try it out" to test
