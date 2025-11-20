@@ -22,17 +22,18 @@ async def root():
 # GET endpoint - Get all potluck items
 @app.get("/potluck")
 async def get_all_dishes():
-    # Function will:
-    # 1. Return all dishes in the potluck
-    pass
+    return {
+        "dishes": thanksgiving_potluck
+    }
 
 # GET endpoint - Get a potluck item
 @app.get("/potluck/{dish_id}")
 async def get_dish(dish_id: int):
-    # Function will:
-    # 1. Find dish by ID in thanksgiving_potluck
-    # 2. Return found dish
-    pass
+    for dish in thanksgiving_potluck:
+        if dish["id"] == dish_id:
+            return dish
+    
+    return { "message": "Dish not found" }
 
 # POST endpoint - Add a new dish to the potluck
 @app.post("/potluck")
@@ -45,11 +46,13 @@ async def add_dish():
 
 # PATCH endpoint - Update dish details
 @app.patch("/potluck/{dish_id}")
-async def update_dish(dish_id: int):
-    # Function will:
-    # 1. Find dish by ID in thanksgiving_potluck
-    # 2. Update only the provided fields
-    # 3. Return updated dish
+async def update_dish(dish_id: int, new_dish: dict):
+    for dish in thanksgiving_potluck:
+        if dish["id"] == dish_id:
+            dish = new_dish
+            return dish
+    
+    return { "message": "Dish not found" }
     pass
 
 # DELETE endpoint - Remove a dish from the potluck
