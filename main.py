@@ -1,3 +1,5 @@
+from database import thanksgiving_potluck
+
 from fastapi import FastAPI, HTTPException
 from database import thanksgiving_potluck
 from typing import List, Optional
@@ -7,6 +9,8 @@ app = FastAPI(
     description="A fun API for managing Tulane's campus Thanksgiving potluck contributions!",
     version="1.0.0"
 )
+
+print(thanksgiving_potluck)
 
 # Root endpoint
 @app.get("/")
