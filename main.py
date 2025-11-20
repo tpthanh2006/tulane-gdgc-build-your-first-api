@@ -55,7 +55,9 @@ async def update_dish(dish_id: int):
 # DELETE endpoint - Remove a dish from the potluck
 @app.delete("/potluck/{dish_id}")
 async def delete_dish(dish_id: int):
-    # Function will:
-    # 1. Find and remove dish from thanksgiving_potluck
-    # 2. Return success message
-    pass
+    for dish in thanksgiving_potluck:
+        if dish["id"] == dish_id:
+            thanksgiving_potluck.remove(dish)
+            return {"dishes": thanksgiving_potluck}
+
+    return {"message": "Dish not found"}
